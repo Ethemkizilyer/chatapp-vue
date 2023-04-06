@@ -8,6 +8,7 @@
     />
     <input type="email" required placeholder="E-Mail" v-model="email" />
     <input type="password" required placeholder="Password" v-model="password" />
+    <div class="error">{{ error }}</div>
     <button>Signup</button>
   </form>
 </template>
@@ -26,7 +27,7 @@ export default {
    await signup(email.value,password.value,displayName.value)
     };
 
-    return { displayName, email, password, handleSubmit };
+    return { displayName, email, password, handleSubmit,error };
   },
 };
 </script>
