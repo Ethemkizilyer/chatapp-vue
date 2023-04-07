@@ -12,7 +12,9 @@
 <span class="message">
     {{ doc.message }}
 </span>
+<button class="delete" @click="()=>handleDelete(doc.id)">Delete</button>
         </div>
+        
     </div>
   </div>
 </template>
@@ -20,7 +22,9 @@
 <script>
 import { computed, ref,onUpdated } from "vue"
 import getCollection from "../composables/getCollection"
+import deleteMessage from "../composables/deleteMessage"
 import {formatDistanceToNow} from "date-fns"
+
 
 
 export default {
@@ -34,12 +38,17 @@ const formatedDocuments=computed(()=>{
         })
     }
 })
+console.log(formatedDocuments)
 const messages=ref(null)
 onUpdated(()=>{
     messages.value.scrollTop=messages.value.scrollHeight
 })
-    return {error,documents,formatedDocuments,messages}
+const handleDelete=(id)=>{
+    deleteMessage(id)
 }
+    return {error,documents,formatedDocuments,messages,handleDelete}
+}
+
 }
 </script>
 
@@ -51,6 +60,12 @@ onUpdated(()=>{
 }
 .single{
     margin: 18px 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    box-shadow: 0px 2px 5px 0px gray;
 }
 .created-at{
     display: block;
@@ -65,5 +80,11 @@ onUpdated(()=>{
 .messages{
 max-height: 400px;
 overflow: auto;
+}
+.delete{
+    position: absolute;
+    right: 0;
+    background: red;
+    cursor: pointer;
 }
 </style>
