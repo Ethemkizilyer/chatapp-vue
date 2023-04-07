@@ -6,9 +6,11 @@ const requireAuth=(to,from,next)=>{
   let user=projectAuth.currentUser
   // console.log("current user in auth guard:",user)
 if(!user){
+  console.log("welcome")
   next({name:"welcome"})
 }else{
   next()
+  console.log("welcome");
 }
 }
 
@@ -16,6 +18,7 @@ const requireNoAuth = (to, from, next) => {
   let user = projectAuth.currentUser;
   // console.log("current user in auth guard:",user)
   if (user) {
+     console.log("chatroom");
     next({ name: "chatroom" });
   } else {
     next();

@@ -21,13 +21,14 @@ const {error,login}=useLogin()
     const password = ref("");
     const handleSubmit =async () => {
      const result =await  login (email.value,password.value)
-     if(!error.value){
-      context.emit("login")
+     if(error.value == ""){
+     context.emit("login")
+     router.push('/chatroom')
      }
-     if(result){
-      router.push('/chatroom')
+    //  if(result){
+    //   router.push('/chatroom')
 
-     }
+    //  }
     };
 
     return { email, password, handleSubmit,error };
