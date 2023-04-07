@@ -12,7 +12,7 @@
 <span class="message">
     {{ doc.message }}
 </span>
-<button class="delete" @click="()=>handleDelete(doc.id)">Delete</button>
+<button v-if="asd ==  doc.uid " class="delete" @click="()=>handleDelete(doc.uid,doc.id)">Delete</button>
         </div>
         
     </div>
@@ -24,11 +24,14 @@ import { computed, ref,onUpdated } from "vue"
 import getCollection from "../composables/getCollection"
 import deleteMessage from "../composables/deleteMessage"
 import {formatDistanceToNow} from "date-fns"
+import getUser from '@/composables/getUser'
 
 
 
 export default {
 setup() {
+const {user}=getUser()
+const asd=ref(user?._rawValue.uid)
     const {error,documents}=getCollection("messages")
 const formatedDocuments=computed(()=>{
     if(documents.value){
@@ -38,15 +41,15 @@ const formatedDocuments=computed(()=>{
         })
     }
 })
-console.log(formatedDocuments)
+
 const messages=ref(null)
 onUpdated(()=>{
     messages.value.scrollTop=messages.value.scrollHeight
 })
-const handleDelete=(id)=>{
-    deleteMessage(id)
+const handleDelete=(uid,id)=>{
+    deleteMessage(uid,id)
 }
-    return {error,documents,formatedDocuments,messages,handleDelete}
+    return {error,documents,formatedDocuments,messages,handleDelete,asd}
 }
 
 }

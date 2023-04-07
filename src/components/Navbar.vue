@@ -18,7 +18,6 @@ setup() {
     const {logout,error}= useLogout()
 const {user}=getUser()
 const asd=ref(user?._rawValue)
-console.log(user)
     const handleClick= async()=>{
 await logout()
 // if(!error.value){

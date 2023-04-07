@@ -22,6 +22,7 @@ setup() {
             name:user.value.displayName,
             message:message.value,
             createdAt:timestamp(),
+            uid:user?._rawValue.uid
         }
         await addDoc(chat)
         if(!error.value){
