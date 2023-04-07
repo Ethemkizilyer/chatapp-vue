@@ -11,15 +11,22 @@
 <script>
 import { ref } from "vue";
 import useLogin from "@/composables/useLogin"
+import { useRouter } from 'vue-router';
+
 export default {
   setup(props,context) {
+    const router = useRouter();
 const {error,login}=useLogin()
     const email = ref("");
     const password = ref("");
     const handleSubmit =async () => {
-     await  login (email.value,password.value)
+     const result =await  login (email.value,password.value)
      if(!error.value){
       context.emit("login")
+     }
+     if(result){
+      router.push('/chatroom')
+
      }
     };
 
