@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 body{
 background: #e3e1ff;
 color: #444;
@@ -21,4 +24,147 @@ button{
     border: 0;
     border-radius: 20px;
     padding: 10px 20px;
+}
+
+@layer base {
+  body {
+    @apply bg-[#c5cae9] text-black;
+  }
+}
+
+@layer components {
+  /* FormSection.vue */
+
+  .btn {
+    @apply w-full transition-all duration-200 ease-in-out rounded-md h-9 select-none;
+  }
+
+  .submit-btn {
+    @apply bg-gray-500 hover:bg-gray-700;
+  }
+
+  .clean-btn {
+    @apply bg-red-400 hover:bg-red-500;
+  }
+
+  /* FormSection.vue */
+}
+
+@layer utilities {
+  /* App.vue */
+
+  .app-container {
+    @apply container mx-auto mt-4  mb-7  px-4 ;
+  }
+
+  /* App.vue */
+
+  /* FormSection.vue */
+
+  .form-section {
+    @apply flex flex-col items-center gap-12 text-center;
+  }
+
+  .form-container {
+    @apply w-full sm:w-[500px] rounded border-2 border-gray-100 shadow;
+  }
+
+  .form-submit {
+    @apply flex flex-col gap-3 p-3;
+  }
+
+  .form-section-row {
+    @apply flex flex-col gap-1;
+  }
+
+  .row-top {
+    @apply flex items-center justify-between gap-10;
+  }
+
+  .error-message {
+    @apply text-red-600 text-sm text-right;
+  }
+
+  .form-input {
+    @apply w-full rounded-md px-2 h-9 outline-none text-black bg-gray-100 border border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 select-none;
+  }
+
+  .form-buttons {
+    @apply flex gap-5 w-full border-t-2 border-gray-100 pt-3;
+  }
+
+  /* FormSection.vue */
+
+  /* ItemList.vue */
+
+  .user-lists-section {
+    @apply flex flex-col items-center justify-center;
+  }
+
+  .data-info {
+    @apply text-lg md:text-xl w-fit text-center my-8 ;
+  }
+
+  .user-lists {
+    @apply w-full flex items-center justify-center flex-wrap gap-4 ;
+  }
+
+  .user-card {
+    @apply relative overflow-hidden min-w-[285px] w-full max-w-[315px] bg-white pt-8 flex flex-col items-center shadow-[0_10px_7px_-5px_rgba(0,0,0,0.40)];
+  }
+
+  .card-base {
+    @apply w-[calc(100%-26px)] absolute top-[19px] left-1/2 -translate-x-1/2  h-5 flex items-center justify-between z-10 select-none;
+  }
+
+  .card-number,
+  .card-delete {
+    @apply w-8 h-8 flex items-center justify-center text-white rounded-full border border-white text-sm;
+  }
+
+  .card-delete {
+    @apply bg-red-600 hover:text-red-300 hover:border-red-300 transition-all duration-200 ease-in-out;
+  }
+
+  .card-header-bg {
+    @apply w-[calc(100%+40px)] h-[104px] bg-[#3964] absolute -top-6 -left-5 before:bg-inherit before:absolute before:w-full before:h-full ;
+  }
+
+  .user-img {
+    @apply h-28 w-28 rounded-full object-cover hover:scale-105 transition-all duration-300 ease-in-out select-none z-10 border-4 border-white;
+  }
+
+  .user-info {
+    @apply w-[calc(100%-40px)] flex flex-col gap-4 items-center z-10 my-5;
+  }
+
+  .user-title {
+    @apply flex flex-col items-center justify-center gap-1;
+  }
+
+  .user-company {
+    @apply flex gap-1 text-[#3964] ;
+  }
+
+  .user-email {
+    @apply hover:text-gray-500 transition-all ease-in-out duration-300 cursor-pointer;
+  }
+
+  .user-socials {
+    @apply w-full bg-[#3964] py-3 flex flex-col items-center gap-2 z-10;
+  }
+
+  .user-socials-links {
+    @apply flex items-center justify-center gap-5;
+  }
+
+  .social-link {
+    @apply rounded-full flex items-center justify-center text-white transition-all ease-in-out duration-300;
+  }
+
+  .social-link-icon {
+    @apply text-xl;
+  }
+
+  /* ItemList.vue */
 }
