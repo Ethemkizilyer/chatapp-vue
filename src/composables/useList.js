@@ -5,9 +5,9 @@ import { ref, onMounted } from "vue";
 const list = ref([]);
 
 export function useList() {
-  async function getUser() {
+  async function getUse() {
     const response = await axios.get("/user.json");
-
+// console.log(response)
     const responseList = Object.keys(response.data).map((key) => {
       return {
         id: key,
@@ -19,7 +19,7 @@ export function useList() {
   }
 
   onMounted(async () => {
-    await getUser();
+    await getUse();
   });
-  return { getUser, list };
+  return { getUse, list };
 }

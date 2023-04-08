@@ -127,7 +127,7 @@ button{
   }
 
   .card-header-bg {
-    @apply w-[calc(100%+40px)] h-[104px] bg-[#3964] absolute -top-6 -left-5 before:bg-inherit before:absolute before:w-full before:h-full ;
+    @apply w-[calc(100%+40px)] h-[104px] bg-[#1964] absolute -top-6 -left-5 before:bg-inherit before:absolute before:w-full before:h-full ;
   }
 
   .user-img {
@@ -151,7 +151,7 @@ button{
   }
 
   .user-socials {
-    @apply w-full bg-[#3964] py-3 flex flex-col items-center gap-2 z-10;
+    @apply w-full bg-[#12ab64] py-3 flex flex-col items-center gap-2 z-10;
   }
 
   .user-socials-links {

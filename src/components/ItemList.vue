@@ -6,7 +6,8 @@ import { useList } from "@/composables/useList";
 const { list } = useList();
 
 async function deleteUser(lt) {
-  const response = await axios.delete(`/users/${lt.id}.json`);
+    // console.log(lt)
+  const response = await axios.delete(`/user/${lt.id}.json`);
 
   if (response.status === 200) {
     list.value = list.value.filter((i) => i.id !== lt.id);
@@ -51,7 +52,7 @@ async function copyCB(email) {
 
         <div class="user-info">
           <div class="flex items-center justify-center gap-1 text-lg font-bold">
-            <div class="user-fullname">{{ lt.name }} {{ lt.surname }}</div>
+            <div class="user-fullname">{{ lt.name }}</div>
 
             <div class="user-age select-none">- {{ lt.age }}</div>
           </div>
@@ -81,14 +82,6 @@ async function copyCB(email) {
                 target="_blank"
                 class="social-link hover:text-[#0a66c2]"
                 ><i class="social-link-icon fa-brands fa-linkedin"></i
-              ></a>
-            </li>
-            <li v-if="lt.twitter">
-              <a
-                :href="`https://www.twitter.com/${lt.twitter}`"
-                target="_blank"
-                class="social-link hover:text-[#1da1f2]"
-                ><i class="social-link-icon fa-brands fa-twitter"></i
               ></a>
             </li>
             <li v-if="lt.github">
