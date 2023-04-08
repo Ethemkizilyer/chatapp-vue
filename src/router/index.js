@@ -40,6 +40,13 @@ const routes = [
     component: () => import("../views/Chatroom.vue"),
     beforeEnter: requireAuth
   },
+  {
+    path: "/users",
+    name: "users",
+
+    component: () => import("../views/Profile.vue"),
+    // beforeEnter: requireAuth
+  },
 ];
 
 const router = createRouter({
