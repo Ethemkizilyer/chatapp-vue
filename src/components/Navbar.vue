@@ -5,6 +5,7 @@
         <p class="email">Currently logged in as {{asd?.email}}</p>
     </div>
     <button class="pointer" @click="handleClick">Logout</button>
+    <button class="pointer asd" @click="handleUsers">Users Profile</button>
   </nav>
 </template>
 
@@ -12,9 +13,10 @@
 import useLogout from '@/composables/useLogout';
 import getUser from '@/composables/getUser';
 import { ref } from 'vue';
+import {useRouter} from "vue-router"
 export default {
 setup() {
-    
+    const router = useRouter()
     const {logout,error}= useLogout()
 const {user}=getUser()
 const asd=ref(user?._rawValue)
@@ -24,7 +26,14 @@ await logout()
 //     console.log("user logged out")
 // }
     }
-    return {handleClick,user,asd}
+    const handleUsers= ()=>{
+
+ router.push({name:"users"})
+// if(!error.value){
+//     console.log("user logged out")
+// }
+    }
+    return {handleClick,user,asd,handleUsers}
 }
 }
 </script>
@@ -50,4 +59,5 @@ nav p.email{
 .pointer{
     cursor: pointer;
 }
+.asd{background:#4576e2;}
 </style>
